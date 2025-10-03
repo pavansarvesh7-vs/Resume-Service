@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Service</title>
+  <style>
+    :root {
+      --color-primary: #fa1239;
+      --color-neutral: #000000;
+      --color-gray: #666666;
+      --color-white: #ffffff;
+      --color-pink-light: #ffe7eb;
+      --color-pink-medium: #ffbfca;
+      --color-green: #1cb098;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      color: var(--color-neutral);
+      overflow-x: hidden;
+    }
+
+    /* Header & Navigation */
+    .header {
+      background: var(--color-white);
+      border-bottom: 1px solid transparent;
+      padding: 0 100px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      height: 58px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      width: 231.17px;
+      height: 58px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-item {
+      padding: 10px;
+    }
+
+    .nav-link {
+      color: #282828;
+      text-decoration: none;
+      font-family: "Figtree-Medium", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    .cta-button {
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      border-radius: 30px;
+      padding: 14px 22px;
+      font-family: "Figtree-Medium", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0px 0px 12px 0px rgba(250, 18, 57, 0.58);
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 15px rgba(250, 18, 57, 0.7);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--color-neutral);
+      padding: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 320px;
+      height: 100%;
+      background: var(--color-white);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .mobile-menu-logo {
+      width: 180px;
+      height: auto;
+    }
+
+    .mobile-close-btn {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--color-neutral);
+      padding: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-close-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .mobile-nav-links {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      color: #282828;
+      text-decoration: none;
+      font-family: "Figtree-Medium", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 15px 0;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(261.18deg, var(--color-pink-light) 0%, var(--color-pink-medium) 100%);
+      min-height: 909px;
+      position: relative;
+      overflow: hidden;
+      padding-top: 58px;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 100px;
+      height: 851px;
+      position: relative;
+    }
+
+    .hero-content {
+      width: 620px;
+      position: relative;
+    }
+
+    .hero-title {
+      font-family: "Figtree-Bold", sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 38px;
+    }
+
+    .hero-title-line1 {
+      color: var(--color-neutral);
+      display: block;
+      line-height: 78px;
+    }
+
+    .hero-title-line2 {
+      color: var(--color-primary);
+      display: block;
+      line-height: 85px;
+      position: relative;
+    }
+
+    .underline-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .underline {
+      position: absolute;
+      bottom: -15px;
+      left: -10px;
+      width: 380px;
+      height: 17px;
+    }
+
+    .hero-title-line3 {
+      color: var(--color-neutral);
+      display: block;
+      line-height: 85px;
+    }
+
+    .hero-description {
+      color: var(--color-neutral);
+      font-family: "Figtree-Regular", sans-serif;
+      font-size: 16px;
+      line-height: 34px;
+      font-weight: 400;
+      width: 485px;
+      margin-bottom: 38px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .secondary-button {
+      background: var(--color-white);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      border-radius: 30px;
+      padding: 14px 22px;
+      font-family: "Figtree-Medium", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0px 0px 12px 0px rgba(250, 18, 57, 0.58);
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .secondary-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 15px rgba(250, 18, 57, 0.4);
+    }
+
+    .primary-button {
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      border-radius: 30px;
+      padding: 14px 22px;
+      font-family: "Figtree-Medium", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0px 0px 12px 0px rgba(250, 18, 57, 0.58);
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 15px rgba(250, 18, 57, 0.7);
+    }
+
+    /* Hero Image Section */
+    .hero-image-section {
+      position: relative;
+      width: 633px;
+      height: 727px;
+    }
+
+    .ellipse-6 {
+      background: radial-gradient(closest-side, rgba(255, 228, 233, 1) 0%, rgba(255, 203, 212, 1) 100%);
+      border-radius: 50%;
+      width: 633px;
+      height: 633px;
+      position: absolute;
+      left: 0;
+      top: 94px;
+    }
+
+    .ellipse-5 {
+      background: radial-gradient(closest-side, rgba(254, 205, 213, 1) 0%, rgba(255, 226, 231, 1) 100%);
+      border-radius: 50%;
+      width: 476px;
+      height: 476px;
+      position: absolute;
+      left: 79px;
+      top: 172px;
+    }
+
+    .hero-image {
+      position: absolute;
+      height: 727px;
+      width: auto;
+      left: 45px;
+      top: 0;
+      z-index: 2;
+    }
+
+    /* Stats Cards - Exact positioning from original code */
+    .stats-260 {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 30px;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      width: 270px;
+      height: 133px;
+      position: absolute;
+      left: 318px; /* 1129px - 811px = 318px */
+      top: 544px; /* 734px - 190px = 544px */
+      z-index: 3;
+    }
+
+    .stat-icon {
+      width: 80px;
+      height: 80px;
+    }
+
+    .stat-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 124px;
+    }
+
+    .stat-number {
+      color: #000000;
+      text-align: left;
+      font-family: "Figtree-ExtraBold", sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      align-self: stretch;
+    }
+
+    .stat-text {
+      color: #666666;
+      text-align: left;
+      font-family: "Figtree-Medium", sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      align-self: stretch;
+    }
+
+    .rating-card {
+      background: rgba(255, 255, 255, 0.79);
+      border-radius: 10px;
+      padding: 20px 15px;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: -82px; /* 729px - 811px = -82px */
+      top: 395px; /* 585px - 190px = 395px */
+      backdrop-filter: blur(45.5px);
+      z-index: 3;
+    }
+
+    .rating-number {
+      color: #1cb098;
+      text-align: left;
+      font-family: "Inter-SemiBold", sans-serif;
+      font-size: 64px;
+      font-weight: 600;
+    }
+
+    .rating-content {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 199px;
+    }
+
+    .stars {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .star {
+      color: #FFD700;
+      font-size: 20px;
+    }
+
+    .rating-text {
+      color: #000000;
+      text-align: left;
+      font-family: "Figtree-SemiBold", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      align-self: stretch;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 100px 60px;
+      background: var(--color-white);
+      position: relative;
+    }
+
+    .services-container {
+      max-width: 1255px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      align-items: center;
+      justify-content: center;
+      width: 1240px;
+      height: 99px;
+      margin: 0 auto 50px;
+    }
+
+    .section-tag {
+      background: rgba(253, 146, 164, 0.3);
+      border-radius: 6px;
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      font-family: "Figtree-SemiBold", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      color: #000000;
+      text-align: center;
+      font-family: "Figtree-SemiBold", sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      height: 450px;
+      box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-icon {
+      flex-shrink: 0;
+      width: 200px;
+      height: 150px;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .service-icon img {
+      height: auto;
+      position: absolute;
+      left: 0;
+      top: 25px;
+    }
+
+    .service-title {
+      color: var(--color-neutral);
+      text-align: left;
+      font-family: "Figtree-Medium", sans-serif;
+      font-size: 20px;
+      font-weight: 550;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .service-description {
+      color: var(--color-neutral);
+      text-align: left;
+      font-family: "Figtree-Regular", sans-serif;
+      font-size: 18px;
+      line-height: 30px;
+      font-weight: 400;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1400px) {
+      .hero-container {
+        padding: 0 60px;
+      }
+      
+      .header {
+        padding: 0 60px;
+      }
+      
+      .section-header {
+        width: 100%;
+      }
+      
+      .underline {
+        width: 340px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .hero-title {
+        font-size: 48px;
+      }
+      
+      .hero-title-line1 {
+        line-height: 60px;
+      }
+      
+      .hero-title-line2,
+      .hero-title-line3 {
+        line-height: 65px;
+      }
+      
+      .underline {
+        width: 280px;
+        bottom: -12px;
+      }
+      
+      .hero-image-section {
+        width: 500px;
+        height: 600px;
+      }
+      
+      .hero-image {
+        height: 600px;
+        left: 30px;
+      }
+      
+      .ellipse-6 {
+        width: 500px;
+        height: 500px;
+        top: 50px;
+      }
+      
+      .ellipse-5 {
+        width: 400px;
+        height: 400px;
+        left: 50px;
+        top: 120px;
+      }
+      
+      .stats-260 {
+        left: 250px;
+        top: 450px;
+      }
+      
+      .rating-card {
+        left: -50px;
+        top: 320px;
+      }
+      
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 40px 20px;
+      }
+      
+      .hero-content {
+        width: 100%;
+        margin-bottom: 40px;
+      }
+      
+      .hero-description {
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .hero-buttons {
+        justify-content: center;
+      }
+      
+      .hero-image-section {
+        width: 100%;
+        height: 500px;
+        margin-top: 40px;
+      }
+      
+      .hero-image {
+        height: 500px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .ellipse-6 {
+        width: 400px;
+        height: 400px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 50px;
+      }
+      
+      .ellipse-5 {
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 120px;
+      }
+      
+      .stats-260, .rating-card {
+        position: relative;
+        margin: 20px auto;
+        left: auto;
+        top: auto;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .header {
+        padding: 0 20px;
+      }
+      
+      .hero {
+        padding-top: 58px;
+        min-height: auto;
+      }
+      
+      .underline {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Smaller Get Quote button for tablet */
+      .cta-button {
+        padding: 10px 16px;
+        font-size: 14px;
+        margin-right: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 36px;
+      }
+      
+      .hero-title-line1 {
+        line-height: 45px;
+      }
+      
+      .hero-title-line2,
+      .hero-title-line3 {
+        line-height: 50px;
+      }
+      
+      .underline {
+        width: 220px;
+        bottom: -10px;
+      }
+      
+      .hero-description {
+        font-size: 14px;
+        line-height: 24px;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      
+      .secondary-button, .primary-button {
+        width: 100%;
+        max-width: 280px;
+      }
+      
+      .hero-image-section {
+        height: 400px;
+      }
+      
+      .hero-image {
+        height: 400px;
+      }
+      
+      .ellipse-6 {
+        width: 300px;
+        height: 300px;
+      }
+      
+      .ellipse-5 {
+        width: 250px;
+        height: 250px;
+        top: 75px;
+      }
+      
+      .services {
+        padding: 60px 20px;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .service-card {
+        height: auto;
+        min-height: 350px;
+      }
+
+      /* Even smaller Get Quote button for mobile */
+      .cta-button {
+        padding: 8px 14px;
+        font-size: 12px;
+        margin-right: 8px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 28px;
+      }
+      
+      .hero-title-line1 {
+        line-height: 35px;
+      }
+      
+      .hero-title-line2,
+      .hero-title-line3 {
+        line-height: 40px;
+      }
+      
+      .underline {
+        width: 180px;
+        bottom: -8px;
+      }
+      
+      .hero-image-section {
+        height: 300px;
+      }
+      
+      .hero-image {
+        height: 300px;
+      }
+      
+      .ellipse-6 {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .ellipse-5 {
+        width: 200px;
+        height: 200px;
+        top: 50px;
+      }
+      
+      .rating-card {
+        flex-direction: column;
+        text-align: center;
+        width: 250px;
+      }
+      
+      .rating-number {
+        font-size: 48px;
+      }
+      
+      .section-title {
+        font-size: 22px;
+      }
+      
+      .stats-260 {
+        width: 250px;
+        padding: 20px;
+      }
+      
+      .mobile-menu {
+        width: 280px;
+      }
+
+      /* Smallest Get Quote button for very small screens */
+      .cta-button {
+        padding: 6px 12px;
+        font-size: 11px;
+        margin-right: 6px;
+      }
+
+      /* Smaller logo for very small screens */
+      .logo {
+        width: 180px;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        padding: 0 15px;
+      }
+      
+      .hero-container {
+        padding: 30px 15px;
+      }
+      
+      .services {
+        padding: 40px 15px;
+      }
+      
+      .service-card {
+        padding: 15px;
+      }
+
+      /* Keep Get Quote button but make it very compact */
+      .cta-button {
+        padding: 5px 10px;
+        font-size: 10px;
+        margin-right: 5px;
+      }
+
+      .logo {
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* For very small screens, keep the button but make it minimal */
+      .cta-button {
+        padding: 4px 8px;
+        font-size: 9px;
+        margin-right: 4px;
+      }
+
+      .logo {
+        width: 130px;
+      }
+
+      .mobile-menu-btn {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="nav-container">
+      <img src="assets/Group 155.png" alt="Company Logo" class="logo">
+      <nav class="nav-links">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Home</a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">About Us</a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Our Services</a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Pricing</a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">FAQ</a>
+        </div>
+      </nav>
+      <button class="cta-button">Get a quote</button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+  <!-- Mobile Menu Sidebar -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <img src="assets/Group 155.png" alt="Company Logo" class="mobile-menu-logo">
+      <button class="mobile-close-btn" id="mobileCloseBtn">✕</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">Home</a>
+      </div>
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">About Us</a>
+      </div>
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">Our Services</a>
+      </div>
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">Pricing</a>
+      </div>
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link">FAQ</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="hero-title-line1">Your Resume</span>
+          <span class="hero-title-line2">
+            <span class="underline-container">
+              Deserves A Yes
+              <img src="assets/Group 4.svg" alt="Underline" class="underline">
+            </span>
+          </span>
+          <span class="hero-title-line3">Let's Make It Happen</span>
+        </h1>
+        <p class="hero-description">
+          If Your resume isn't getting responses, it's time for an upgrade. Get an
+          ATS-optimized resume crafted by HR experts to help you land more
+          interviews. Our resumes are designed to get your foot in the door and
+          place your name at the top of the shortlist.
+        </p>
+        <div class="hero-buttons">
+          <button class="secondary-button">Resume Packages</button>
+          <button class="primary-button">Contact us</button>
+        </div>
+      </div>
+      
+      <div class="hero-image-section">
+        <div class="ellipse-6"></div>
+        <div class="ellipse-5"></div>
+        <img src="assets/girlimage.png" alt="Happy woman" class="hero-image">
+        
+        <!-- Stats Cards -->
+        <div class="stats-260">
+          <img src="assets/Mask group.svg" alt="Resume Icon" class="stat-icon">
+          <div class="stat-content">
+            <div class="stat-number">260+</div>
+            <div class="stat-text">Online Resume Created</div>
+          </div>
+        </div>
+        
+        <div class="rating-card">
+          <div class="rating-number">4.9</div>
+          <div class="rating-content">
+            <div class="stars">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <div class="rating-text">Instructor Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <div class="services-container">
+      <div class="section-header">
+        <div class="section-tag">What you Get</div>
+        <h2 class="section-title">
+          You're not just another applicant and your resume shouldn't look like one
+        </h2>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="assets/Group 90.svg" alt="ATS Filters Icon">
+          </div>
+          <h3 class="service-title">A Resume That Passes ATS Filters</h3>
+          <p class="service-description">
+            Get a professionally written, keyword-optimized resume that lands in
+            recruiter inboxes—not rejection piles.
+          </p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="assets/g1.svg" alt="Cover Letter Icon">
+          </div>
+          <h3 class="service-title">A Cover Letter That Gets Read</h3>
+          <p class="service-description">
+            Stand out with a cover letter that speaks directly to the role and
+            reflects your strengths.
+          </p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="assets/Group 92.svg" alt="LinkedIn Icon">
+          </div>
+          <h3 class="service-title">A LinkedIn Profile That Works For You</h3>
+          <p class="service-description">
+            Attract the right eyes, start conversations, and show up in recruiter
+            searches.
+          </p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="assets/Group 93.svg" alt="Interview Icon">
+          </div>
+          <h3 class="service-title">Interview Confidence</h3>
+          <p class="service-description">
+            Interview preparation with real HR professionals so you speak clearly,
+            confidently, and convincingly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('active');
+      mobileMenuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+    // Close menu when clicking on a link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close menu with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 992) {
+        closeMobileMenu();
+      }
+    });
+  </script>
+</body>
+</html>
